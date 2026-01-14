@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //массивы
+        console.log('==Деструктуризация массива==');
+        let users = ["J.Bond", "J.Sparrow"];
+
+        //деструктурирующее присваивание
+        let [user1, user2] = users;
+        console.log("Деструктурирующее присваивание: " + user1 + ' и ' + user2);
+        //иначе
+        console.log('Вывод элементов массива с помощью цикла: ');
+        for(let i = 0; i < users.length; i++){
+            console.log(users[i] + ' ');
+        }
+        console.log('==Функции, возвращающие массив==');
+        let str = "live long and prosper";
+        let [live, long, and, prosper] = str.split(' ');
+        console.log(prosper, and, live, long);
+
+        //элементы можно пропускать
+        console.log('==Пропускаем элементы==');
+        [live, long, , prosper] = str.split(' ');
+        console.log(live, long + ", " + prosper);
+
+        //можем работать с любым перебираемым обьектом
+        console.log('==Деструктурируем перебираемые обьекты==');
+        let[one, two, three] = "123";
+        console.log(one, two, three);
+        console.log(one + two + three);
+        
+        //оператор "остаточные параметры"
+        console.log('==Остаточные параметры==');
+        let [noun, verb, ...other] = ["I'm", "gonna", "make", "him", "an", "offer", "he", "can't", "refuse"]; //other стоит на последнем месте в деструктурирующем присваивании
+        console.log(noun, verb, other);
+        console.log(other.length);
+
+        //если элементов в массиве меньше
+        console.log('==Элементов в массиве меньше==');
+        [one, two, three] = ['one', 'two'];
+        console.log(one, two, three);
+
+        //значения по умолчанию
+        console.log('==Значения по умолчанию==');
+        [one, two, three = 'three'] = ['one', 'two'];
+        console.log(one, two, three);
+
+        [one, two, three = 'three'] = ['one', 'two', 'ten'];
+        console.log(one, two, three);
+
+        //обьекты
+        console.log('==Деструктуризация обьекта==');
+        let user = {
+            name: "Nikita",
+            email: "user_email@gmail.com",
+            age: 23
+        };
+
+        //let {name, email, age} = user;
+        //({name, email, age} = user);
+
+        //let {email, age, name} = {name: "Nikita", email: "user_email@gmail.com", age: 23};
+        //console.log(name, email, age);
+
+        let {email: userEmail, age: userAge, name: userName} = {name: "Nikita", email: "user_email@gmail.com", age: 23};
+        console.log(userEmail, userAge, userName);
+    </script>
+</body>
+</html>

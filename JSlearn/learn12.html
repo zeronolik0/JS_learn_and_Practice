@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //чтение куки
+        let cookies = document.cookie;
+        console.log(cookies);
+
+        //запись куки
+        document.cookie = "user = Nikita";
+        document.cookie = "date = 12.01.2026";
+        document.cookie = "age = 23";
+        document.cookie = "user = Mike";
+        console.log(document.cookie);
+
+        //корректная запись куки
+        let str1 = "Phrase with";
+        let str2 = "spaces inside";
+
+       console.log(document.cookie = encodeURIComponent(str1) + '=' + encodeURIComponent(str2));
+       console.log(document.cookie = str1 + '=' + str2);
+
+       //настройки
+       document.cookie = "user = Nikita; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT";
+       //domain=site.com; max-age=3600; secure; samesite
+       console.log(document.cookie);
+
+       //куки со сроком жизни в 1 месяц
+       document.cookie = "name=user;max-age=2629743";
+       /* или */
+       var cookie_date = new Date();
+       cookie_date.setMonth(cookie_date.getMonth() + 1);
+       document.cookie = "name=user;expires=" + cookie_date.toUTCString();
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<script>
+    function loadNewScript(src, callback) {
+		let script = document.createElement('script');
+		script.src = src;
+
+		script.onload = () => callback(null, script);
+		script.onerror = () => callback(new Error(`Script download error! ${src}`));
+
+		document.head.append(script);
+	}
+
+    function loadNewScript(src) {
+        return new Promise(function(resolve, reject) {
+		let script = document.createElement('script');
+		script.src = src;
+
+		script.onload = () => callback(null, script);
+		script.onerror = () => callback(new Error(`Script download error! ${src}`));
+
+		document.head.append(script);
+        })
+	}
+
+    loadNewScript('myScript.js', function(error, script) {
+		if (error) {
+			alert(error);
+		} else {
+			veryShortFunction();
+		}
+	});
+
+
+    let promise = loadNewScript("learn10script.js");
+    promise.then(
+        function(result) {
+            veryShortFunction();
+        })
+        promise.catch(alert);
+
+/*
+    let promise = loadNewScript('learn10script.js');
+    promise
+        .finally(alert("Finished"))
+        .then(result => veryShortFunction())
+        .catch(result => alert(result));
+        */
+</script>
