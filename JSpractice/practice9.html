@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice9</title>
+    <link rel="stylesheet" href="practice9.css">
+</head>
+<body id = "main">
+    
+</body>
+<script>
+    function loadNewScript(src, callback) {
+        let script = document.createElement('script');
+		script.src = src;
+
+		script.onload = () => callback(null, script);
+		script.onerror = () => callback(new Error(`Script download error! ${src}`));
+
+		document.head.append(script);
+    }
+    loadNewScript('practice9script.js', function(error, script) {
+		if (error) {
+			alert(error);
+		} else {
+			createDiv();
+		}
+	});
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice10</title>
+    <link rel="stylesheet" href="practice10.css">
+</head>
+<body id = "main">
+    
+</body>
+<script>
+
+    function loadNewScript(src) {
+        return new Promise(function(resolve, reject) {
+            let script = document.createElement('script');
+            script.src = src;
+
+            script.onload = () => resolve(script);
+            script.onerror = () => reject(Error(`Script download error! ${src}`));
+
+            document.head.append(script);
+        })
+    }
+
+    loadNewScript("practice10script.js")
+     .then(function(script) {
+        return loadNewScript("practice10script1.js");
+    })
+     .then(function(script) {
+        return loadNewScript("practice10script2.js");
+    })
+     .then(function(script) {
+        createDiv();
+        veryShortFunction1();
+        veryShortFunction2();
+     })
+      .catch(err => alert(err));
+</script>
+</html>
